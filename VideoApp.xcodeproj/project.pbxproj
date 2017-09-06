@@ -14,6 +14,7 @@
 		FD9D0AF21F5E95BC0038F2F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD9D0AF01F5E95BC0038F2F4 /* Main.storyboard */; };
 		FD9D0AF41F5E95BC0038F2F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD9D0AF31F5E95BC0038F2F4 /* Assets.xcassets */; };
 		FD9D0AF71F5E95BC0038F2F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD9D0AF51F5E95BC0038F2F4 /* LaunchScreen.storyboard */; };
+		FDD8D57A1F5FED0500895F08 /* Menubar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8D5791F5FED0500895F08 /* Menubar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FD9D0AF31F5E95BC0038F2F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD9D0AF61F5E95BC0038F2F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD9D0AF81F5E95BC0038F2F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDD8D5791F5FED0500895F08 /* Menubar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menubar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				FD6280A61F5FBC44003D50A1 /* VideoCell.swift */,
+				FDD8D5791F5FED0500895F08 /* Menubar.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -82,8 +85,8 @@
 		FD9D0AEB1F5E95BC0038F2F4 /* VideoApp */ = {
 			isa = PBXGroup;
 			children = (
-				FD6280A81F5FBC81003D50A1 /* Controller */,
 				FD6280A51F5FBBFD003D50A1 /* View */,
+				FD6280A81F5FBC81003D50A1 /* Controller */,
 				FD6280A21F5FBB62003D50A1 /* Helpers */,
 				FD9D0AEC1F5E95BC0038F2F4 /* AppDelegate.swift */,
 				FD9D0AF01F5E95BC0038F2F4 /* Main.storyboard */,
@@ -170,6 +173,7 @@
 				FD6280A71F5FBC44003D50A1 /* VideoCell.swift in Sources */,
 				FD6280A41F5FBB7B003D50A1 /* Extensions.swift in Sources */,
 				FD9D0AED1F5E95BC0038F2F4 /* AppDelegate.swift in Sources */,
+				FDD8D57A1F5FED0500895F08 /* Menubar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
