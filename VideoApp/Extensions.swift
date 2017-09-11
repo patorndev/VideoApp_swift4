@@ -36,16 +36,41 @@ extension UIView {
     
 }
 
-extension UIImageView {
+let imageCache = NSCache<NSString, AnyObject>()
+
+class CustomImageView: UIImageView {
+    
+    var imageUrlString:String?
+    
     func loadImageUsingURLString(urlString: String) {
+        
+        imageUrlString = urlString
+        
         let url = URL(string: urlString)
+        
+        image = nil
+        
+        if let imageFromCache = imageCache.object(forKey: urlString as NSString) as? UIImage {
+            self.image = imageFromCache
+            return
+        }
+        
         URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
             if error != nil {
                 print(error!)
                 return
             }
             DispatchQueue.main.async {
-                self.image = UIImage(data: data!)
+                
+                let imageToCache = UIImage(data: data!)
+                
+                // making sure the cell that is visible is still corresponding to the original imageURL
+                if self.imageUrlString == urlString {
+                
+                    imageCache.object(forKey: urlString as NSString)
+                }
+                
+                self.image = imageToCache
             }
         }).resume()
     }

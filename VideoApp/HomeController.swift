@@ -64,7 +64,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     self.videos?.append(video)
                 }
                 
-                self.collectionView?.reloadData()
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadData()
+                }
                 
                 
             } catch let jsonError {
@@ -140,11 +142,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! VideoCell
-        
         cell.video = videos?[indexPath.item]
-        
-        
         
         return cell
     }

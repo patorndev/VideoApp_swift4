@@ -85,9 +85,9 @@ class VideoCell: BaseCell {
     }
 
     // create big thumbnail
-    let thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
-        //imageView.image = UIImage(named: "taylor_swift_blank_space")
+    let thumbnailImageView: CustomImageView = {
+        let imageView = CustomImageView()
+        imageView.image = UIImage(named: "taylor_swift_blank_space")
         imageView.backgroundColor = UIColor.lightGray
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -101,8 +101,8 @@ class VideoCell: BaseCell {
         return view
     }()
     
-    let userProfileImageView: UIImageView = {
-        let imageView = UIImageView()
+    let userProfileImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.image = UIImage(named: "taylor_swift_profile")
         // set corner radius to be half the size of userProfileImageView
         imageView.layer.cornerRadius = 22
