@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BaseCell: UICollectionViewCell {
     override init(frame: CGRect) {
@@ -74,19 +75,26 @@ class VideoCell: BaseCell {
     func setupThumbnailImage() {
         if let thumbnailImageUrl = video?.thumbnailImageName {
             // call helper method to setup image
-            thumbnailImageView.loadImageUsingURLString(urlString: thumbnailImageUrl)
+//            thumbnailImageView.loadImageUsingURLString(urlString: thumbnailImageUrl)
+            
+            // Kingfisher helper
+            let url = URL(string: thumbnailImageUrl)
+            thumbnailImageView.kf.indicatorType = .activity
+            thumbnailImageView.kf.setImage(with: url)
         }
     }
     
     func setupProfileimage() {
         if let profileImageUrl = video?.channel?.profileImageName {
-            userProfileImageView.loadImageUsingURLString(urlString: profileImageUrl)
+            // Kingfisher
+            let url = URL(string: profileImageUrl)
+            userProfileImageView.kf.setImage(with: url)
         }
     }
 
     // create big thumbnail
-    let thumbnailImageView: CustomImageView = {
-        let imageView = CustomImageView()
+    let thumbnailImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.image = UIImage(named: "taylor_swift_blank_space")
         imageView.backgroundColor = UIColor.lightGray
         imageView.contentMode = .scaleAspectFill
@@ -101,8 +109,8 @@ class VideoCell: BaseCell {
         return view
     }()
     
-    let userProfileImageView: CustomImageView = {
-        let imageView = CustomImageView()
+    let userProfileImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.image = UIImage(named: "taylor_swift_profile")
         // set corner radius to be half the size of userProfileImageView
         imageView.layer.cornerRadius = 22
