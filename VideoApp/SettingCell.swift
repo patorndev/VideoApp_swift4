@@ -23,7 +23,7 @@ class SettingCell: BaseCell {
     var setting: Setting? {
         didSet{
             // set label based on setting name
-            nameLabel.text = setting?.name
+            nameLabel.text = setting?.name.rawValue
             // set icon based on setting imageName
             if let imageName = setting?.imageName {
                 // rendering while ignored the color of image

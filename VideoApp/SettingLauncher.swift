@@ -9,14 +9,24 @@
 import UIKit
 
 class Setting: NSObject {
-    let name: String
+    let name: SettingName
     let imageName: String
     
-    init(name: String, imageName: String) {
+    init(name: SettingName, imageName: String) {
         self.name = name
         self.imageName = imageName
     }
 }
+
+enum SettingName: String {
+    case Cancel = "Cancel"
+    case Settings = "Settings"
+    case TermsPrivacy = "Terms & Privacy policy"
+    case SendFeedback = "Send Feedback"
+    case Help = "Help"
+    case SwitchAccount = "Switch Account"
+}
+
 
 class SettingLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -36,12 +46,12 @@ class SettingLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDel
     
     let settings: [Setting] = {
         
-        return [Setting(name: "Settings", imageName: "settings"),
-                Setting(name: "Term & privacy policy", imageName: "privacy"),
-                Setting(name: "Send Feedback", imageName: "feedback"),
-                Setting(name: "Help", imageName: "help"),
-                Setting(name: "Switch Account", imageName: "switch_account"),
-                Setting(name: "Cancel", imageName: "cancel")]
+        return [Setting(name: .Settings, imageName: "settings"),
+                Setting(name: .TermsPrivacy, imageName: "privacy"),
+                Setting(name: .SendFeedback, imageName: "feedback"),
+                Setting(name: .Help, imageName: "help"),
+                Setting(name: .SwitchAccount, imageName: "switch_account"),
+                Setting(name: .Cancel, imageName: "cancel")]
     }()
     
 
@@ -98,7 +108,7 @@ class SettingLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDel
         }) { (completed: Bool) in
             
             // if not nil or Cancle call showControllerForSetting from homecontroller
-            if setting.name != "" && setting.name != "Cancel" {
+            if setting.name != .Cancel {
                 
                 self.homeController?.showControllerForSetting(setting)
             }
