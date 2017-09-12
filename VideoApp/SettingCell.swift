@@ -10,7 +10,7 @@ import UIKit
 
 class SettingCell: BaseCell {
     
-    // when hilighted change color
+    // when the cell is hilighted; change color
     override var isHighlighted: Bool {
         didSet {
             backgroundColor = isHighlighted ? UIColor.darkGray : UIColor.white
