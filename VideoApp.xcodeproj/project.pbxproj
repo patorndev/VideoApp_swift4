@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9E50FC3228B37D8D20553FFB /* Pods_VideoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE28C92A8EA17098971F212 /* Pods_VideoApp.framework */; };
 		FD523E201F6793000082D687 /* SettingLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD523E1F1F6793000082D687 /* SettingLauncher.swift */; };
+		FD523E221F679F140082D687 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD523E211F679F140082D687 /* SettingCell.swift */; };
 		FD6280A41F5FBB7B003D50A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6280A31F5FBB7B003D50A1 /* Extensions.swift */; };
 		FD6280A71F5FBC44003D50A1 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6280A61F5FBC44003D50A1 /* VideoCell.swift */; };
 		FD9D0AED1F5E95BC0038F2F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9D0AEC1F5E95BC0038F2F4 /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 		4EE28C92A8EA17098971F212 /* Pods_VideoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		906B063A8D449F4C7315467C /* Pods-VideoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VideoApp/Pods-VideoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FD523E1F1F6793000082D687 /* SettingLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingLauncher.swift; sourceTree = "<group>"; };
+		FD523E211F679F140082D687 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		FD6280A31F5FBB7B003D50A1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FD6280A61F5FBC44003D50A1 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		FD9D0AE91F5E95BC0038F2F4 /* VideoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +82,7 @@
 			children = (
 				FD6280A61F5FBC44003D50A1 /* VideoCell.swift */,
 				FDD8D5791F5FED0500895F08 /* Menubar.swift */,
+				FD523E211F679F140082D687 /* SettingCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			files = (
 				FD523E201F6793000082D687 /* SettingLauncher.swift in Sources */,
 				FD9D0AEF1F5E95BC0038F2F4 /* HomeController.swift in Sources */,
+				FD523E221F679F140082D687 /* SettingCell.swift in Sources */,
 				FDBA43E21F612CFA00DD5EEC /* Video.swift in Sources */,
 				FD6280A71F5FBC44003D50A1 /* VideoCell.swift in Sources */,
 				FD6280A41F5FBB7B003D50A1 /* Extensions.swift in Sources */,
