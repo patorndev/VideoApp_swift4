@@ -19,6 +19,7 @@ class SettingCell: BaseCell {
         }
     }
     
+    // set properties of each settingCell
     var setting: Setting? {
         didSet{
             // set label based on setting name

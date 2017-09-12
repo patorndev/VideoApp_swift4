@@ -10,27 +10,6 @@ import UIKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    // array of video objects
-//    var videos: [Video] = {
-//        var kanyeChannel = Channel()
-//        kanyeChannel.name = "KanyeIsTheBestChannel"
-//        kanyeChannel.profileImageName = "kanye_profile"
-//        
-//        var blankSpaceVideo = Video()
-//        blankSpaceVideo.title = "Taylor Swift - Blank Space"
-//        blankSpaceVideo.thumbnailImageName = "taylor_swift_blank_space"
-//        blankSpaceVideo.channel = kanyeChannel
-//        blankSpaceVideo.numberOfViews = 234325151
-//        
-//        var badBloodVideo = Video()
-//        badBloodVideo.title = "Taylor Swift - Bad Blood featuring Kendrick Lamar DJ Khaledddddddd"
-//        badBloodVideo.thumbnailImageName = "taylor_swift_bad_blood"
-//        badBloodVideo.channel = kanyeChannel
-//        badBloodVideo.numberOfViews = 1241141435
-//        
-//        return [blankSpaceVideo, badBloodVideo]
-//    }()
-    
     var videos: [Video]?
     
     func fetchVideos() {
@@ -73,9 +52,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 print(jsonError)
             }
             
-//            let str = String(data: data! , encoding: String.Encoding.utf8)
-//            print(str!)
-            
         }.resume()
     }
 
@@ -115,11 +91,26 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationItem.rightBarButtonItems = [moreButton, searchBarButtonItem]
     }
     
-    let settinglauncher = SettingLauncher()
+    // not execute everytime initiated
+    // only call when variable is nil
+    lazy var settinglauncher: SettingLauncher = {
+        let launcher = SettingLauncher()
+        launcher.homeController = self
+        return launcher
+    }()
 
     func handleMore() {
         
         settinglauncher.showSetting()
+    }
+    
+    func showControllerForSetting(_ setting: Setting) {
+        let dummySettingViewController = UIViewController()
+        dummySettingViewController.view.backgroundColor = UIColor.white
+        dummySettingViewController.navigationItem.title = setting.name
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.pushViewController(dummySettingViewController, animated: true)
     }
     
     func handleSearch() {
