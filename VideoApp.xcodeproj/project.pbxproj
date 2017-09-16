@@ -17,6 +17,7 @@
 		FD9D0AF21F5E95BC0038F2F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD9D0AF01F5E95BC0038F2F4 /* Main.storyboard */; };
 		FD9D0AF41F5E95BC0038F2F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD9D0AF31F5E95BC0038F2F4 /* Assets.xcassets */; };
 		FD9D0AF71F5E95BC0038F2F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD9D0AF51F5E95BC0038F2F4 /* LaunchScreen.storyboard */; };
+		FDA774451F69312900C75264 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA774441F69312900C75264 /* ApiService.swift */; };
 		FDBA43E21F612CFA00DD5EEC /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBA43E11F612CFA00DD5EEC /* Video.swift */; };
 		FDD8D57A1F5FED0500895F08 /* Menubar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8D5791F5FED0500895F08 /* Menubar.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		FD9D0AF31F5E95BC0038F2F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD9D0AF61F5E95BC0038F2F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD9D0AF81F5E95BC0038F2F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDA774441F69312900C75264 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		FDBA43E11F612CFA00DD5EEC /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		FDD8D5791F5FED0500895F08 /* Menubar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menubar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +119,7 @@
 		FD9D0AEB1F5E95BC0038F2F4 /* VideoApp */ = {
 			isa = PBXGroup;
 			children = (
+				FDA774431F6930FF00C75264 /* ApiService */,
 				FDBA43E01F612CE800DD5EEC /* Model */,
 				FD6280A51F5FBBFD003D50A1 /* View */,
 				FD6280A81F5FBC81003D50A1 /* Controller */,
@@ -128,6 +131,14 @@
 				FD9D0AF81F5E95BC0038F2F4 /* Info.plist */,
 			);
 			path = VideoApp;
+			sourceTree = "<group>";
+		};
+		FDA774431F6930FF00C75264 /* ApiService */ = {
+			isa = PBXGroup;
+			children = (
+				FDA774441F69312900C75264 /* ApiService.swift */,
+			);
+			name = ApiService;
 			sourceTree = "<group>";
 		};
 		FDBA43E01F612CE800DD5EEC /* Model */ = {
@@ -272,6 +283,7 @@
 				FD523E221F679F140082D687 /* SettingCell.swift in Sources */,
 				FDBA43E21F612CFA00DD5EEC /* Video.swift in Sources */,
 				FD6280A71F5FBC44003D50A1 /* VideoCell.swift in Sources */,
+				FDA774451F69312900C75264 /* ApiService.swift in Sources */,
 				FD6280A41F5FBB7B003D50A1 /* Extensions.swift in Sources */,
 				FD9D0AED1F5E95BC0038F2F4 /* AppDelegate.swift in Sources */,
 				FDD8D57A1F5FED0500895F08 /* Menubar.swift in Sources */,
