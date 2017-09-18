@@ -18,6 +18,7 @@
 		FD9D0AF41F5E95BC0038F2F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD9D0AF31F5E95BC0038F2F4 /* Assets.xcassets */; };
 		FD9D0AF71F5E95BC0038F2F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD9D0AF51F5E95BC0038F2F4 /* LaunchScreen.storyboard */; };
 		FDA774451F69312900C75264 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA774441F69312900C75264 /* ApiService.swift */; };
+		FDAC51BA1F6F81EC00AD4398 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC51B91F6F81EC00AD4398 /* FeedCell.swift */; };
 		FDBA43E21F612CFA00DD5EEC /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBA43E11F612CFA00DD5EEC /* Video.swift */; };
 		FDD8D57A1F5FED0500895F08 /* Menubar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8D5791F5FED0500895F08 /* Menubar.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		FD9D0AF61F5E95BC0038F2F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD9D0AF81F5E95BC0038F2F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDA774441F69312900C75264 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		FDAC51B91F6F81EC00AD4398 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		FDBA43E11F612CFA00DD5EEC /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		FDD8D5791F5FED0500895F08 /* Menubar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menubar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 				FD6280A61F5FBC44003D50A1 /* VideoCell.swift */,
 				FDD8D5791F5FED0500895F08 /* Menubar.swift */,
 				FD523E211F679F140082D687 /* SettingCell.swift */,
+				FDAC51B91F6F81EC00AD4398 /* FeedCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD523E201F6793000082D687 /* SettingLauncher.swift in Sources */,
+				FDAC51BA1F6F81EC00AD4398 /* FeedCell.swift in Sources */,
 				FD9D0AEF1F5E95BC0038F2F4 /* HomeController.swift in Sources */,
 				FD523E221F679F140082D687 /* SettingCell.swift in Sources */,
 				FDBA43E21F612CFA00DD5EEC /* Video.swift in Sources */,
