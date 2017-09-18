@@ -10,6 +10,7 @@ import UIKit
 
 class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    var homeController: HomeController?
     
     // lazy var: because its initial value might not be retrieved until after instance initialization completes
     lazy var collectionView: UICollectionView = {
@@ -67,17 +68,21 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // get the starting point of the horizontal bar in x axis\
-        // e.g. index0: 0*320/4 index1: 1*320/4 index2: 2*320/4
-        let x = CGFloat(indexPath.item) * frame.width / 4
-        // use x to set the value of left constraint
-        horizontalBarLeftAnchorConstraint?.constant = x
         
-
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { 
-            self.layoutIfNeeded()
-        }, completion: nil)
-
+//        print(indexPath)
+//        // get the starting point of the horizontal bar in x axis\
+//        // e.g. index0: 0*320/4 index1: 1*320/4 index2: 2*320/4
+//        let x = CGFloat(indexPath.item) * frame.width / 4
+//        // use x to set the value of left constraint
+//        horizontalBarLeftAnchorConstraint?.constant = x
+//        
+//
+//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { 
+//            self.layoutIfNeeded()
+//        }, completion: nil)
+        
+        homeController?.scrollToMenuIndex(menuIndex: indexPath.item)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
