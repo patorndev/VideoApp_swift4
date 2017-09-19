@@ -36,6 +36,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         setUpNavBarButton()
     }
     
+    
     func setCollectionView() {
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .horizontal

@@ -134,7 +134,7 @@ class VideoCell: BaseCell {
         // default inset is 8 change the inset here
         textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
         textView.textColor = UIColor.lightGray
-        textView.isEditable = false
+        textView.isUserInteractionEnabled = false
         return textView
     }()
     
