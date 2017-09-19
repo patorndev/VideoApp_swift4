@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // change to status bar to light color
         // need to change UIViewControllerBasedStatusBarAppearance in info.plist to make it work
         application.statusBarStyle = .lightContent
+        application.isStatusBarHidden = false
         
         let statusBarBackgroundView = UIView()
         statusBarBackgroundView.backgroundColor = UIColor.rgb(red: 194, green: 31, blue: 31)
