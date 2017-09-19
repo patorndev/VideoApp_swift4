@@ -23,6 +23,7 @@
 		FDAC51BE1F6FC3AB00AD4398 /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC51BD1F6FC3AB00AD4398 /* SubscriptionCell.swift */; };
 		FDBA43E21F612CFA00DD5EEC /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBA43E11F612CFA00DD5EEC /* Video.swift */; };
 		FDD8D57A1F5FED0500895F08 /* Menubar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8D5791F5FED0500895F08 /* Menubar.swift */; };
+		FDDFA7F81F70E428001A974B /* VideoLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDFA7F71F70E428001A974B /* VideoLauncher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		FDAC51BD1F6FC3AB00AD4398 /* SubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
 		FDBA43E11F612CFA00DD5EEC /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		FDD8D5791F5FED0500895F08 /* Menubar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menubar.swift; sourceTree = "<group>"; };
+		FDDFA7F71F70E428001A974B /* VideoLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoLauncher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				FD6280A31F5FBB7B003D50A1 /* Extensions.swift */,
+				FDDFA7F71F70E428001A974B /* VideoLauncher.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				FD523E221F679F140082D687 /* SettingCell.swift in Sources */,
 				FDBA43E21F612CFA00DD5EEC /* Video.swift in Sources */,
 				FD6280A71F5FBC44003D50A1 /* VideoCell.swift in Sources */,
+				FDDFA7F81F70E428001A974B /* VideoLauncher.swift in Sources */,
 				FDA774451F69312900C75264 /* ApiService.swift in Sources */,
 				FD6280A41F5FBB7B003D50A1 /* Extensions.swift in Sources */,
 				FD9D0AED1F5E95BC0038F2F4 /* AppDelegate.swift in Sources */,
