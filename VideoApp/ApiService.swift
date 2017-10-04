@@ -16,7 +16,7 @@ class ApiService: NSObject {
     let baseUrl = "https://s3-us-west-2.amazonaws.com/youtubeassets"
     
     func fetchVideos(completion: @escaping ([Video]) -> ()) {
-        fetchFeedForURL(url: "\(baseUrl)/homie.json", completion: completion)
+        fetchFeedForURL(url: "\(baseUrl)/home.json", completion: completion)
     }
 
     

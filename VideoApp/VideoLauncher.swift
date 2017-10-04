@@ -238,6 +238,9 @@ class VideoPlayerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        controlContainerView.isHidden = !controlContainerView.isHidden
+    }
 }
 
 class VideoLauncher: NSObject {
