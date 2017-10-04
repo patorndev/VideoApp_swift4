@@ -75,7 +75,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return launcher
     }()
 
-    func handleMore() {
+    @objc func handleMore() {
         
         settinglauncher.showSetting()
     }
@@ -85,11 +85,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         dummySettingViewController.view.backgroundColor = UIColor.white
         dummySettingViewController.navigationItem.title = setting.name.rawValue
         navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.pushViewController(dummySettingViewController, animated: true)
     }
     
-    func handleSearch() {
+    @objc func handleSearch() {
         scrollToMenuIndex(menuIndex: 2)
     }
     

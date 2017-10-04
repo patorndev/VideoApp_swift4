@@ -11,6 +11,8 @@ import AVFoundation
 
 class VideoPlayerView: UIView {
     
+    var player: AVPlayer?
+    var isPlaying = false
     
     let activityIndicatorView: UIActivityIndicatorView = {
         let aiv = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
@@ -36,20 +38,7 @@ class VideoPlayerView: UIView {
         return button
     }()
     
-    var isPlaying = false
     
-    func handlePause() {
-        if isPlaying {
-            print("Pausing Player")
-            player?.pause()
-            pausePlayButton.setImage(UIImage(named: "play"), for: .normal)
-        } else {
-            player?.play()
-            pausePlayButton.setImage(UIImage(named: "pause"), for: .normal)
-        }
-        
-        isPlaying = !isPlaying
-    }
     
     let videoLengthLabel: UILabel = {
         let label = UILabel()
@@ -81,7 +70,7 @@ class VideoPlayerView: UIView {
         return slider
     }()
     
-    func handleSliderChange() {
+    @objc func handleSliderChange() {
 //        print(videoSlider.value)
         
         if let duration = player?.currentItem?.duration {
@@ -96,6 +85,20 @@ class VideoPlayerView: UIView {
             })
         }
     }
+    
+    @objc func handlePause() {
+        if isPlaying {
+            print("Pausing Player")
+            player?.pause()
+            pausePlayButton.setImage(UIImage(named: "play"), for: .normal)
+        } else {
+            player?.play()
+            pausePlayButton.setImage(UIImage(named: "pause"), for: .normal)
+        }
+        
+        isPlaying = !isPlaying
+    }
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -140,7 +143,6 @@ class VideoPlayerView: UIView {
         
     }
 
-    var player: AVPlayer?
 
     
     func setupPlayerView() {

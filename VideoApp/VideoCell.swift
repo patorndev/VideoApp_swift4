@@ -59,7 +59,7 @@ class VideoCell: BaseCell {
                 let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
                 
                 // get the estimate Rectangle area size of title text
-                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil)
+                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)], context: nil)
                 
                 if estimatedRect.size.height > 20 {
                     titleHeightConstraint?.constant = 44
