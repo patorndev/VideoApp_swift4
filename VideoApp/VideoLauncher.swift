@@ -72,6 +72,26 @@ class VideoPlayerView: UIView {
         return slider
     }()
     
+    
+    let closeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Close", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(handleClose), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func handleClose() {
+        print("Close Player")
+        player?.pause()
+        playerLayer?.removeFromSuperlayer()
+        self.superview?.removeFromSuperview()
+        UIApplication.shared.isStatusBarHidden = false
+        player = nil
+    }
+
+    
     @objc func handleSliderChange() {
 //        print(videoSlider.value)
         
@@ -139,7 +159,12 @@ class VideoPlayerView: UIView {
         videoSlider.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         videoSlider.leftAnchor.constraint(equalTo: cuurentTimeLabel.rightAnchor).isActive = true
         videoSlider.heightAnchor.constraint(equalToConstant: 30).isActive = true
-
+        
+        controlContainerView.addSubview(closeButton)
+        closeButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
+        closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 54).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     
         backgroundColor = .black
         
@@ -217,20 +242,6 @@ class VideoPlayerView: UIView {
 
 class VideoLauncher: NSObject {
     
-    let closeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Close", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .white
-        button.addTarget(self, action: #selector(handleClose), for: .touchUpInside)
-        return button
-    }()
-    
-    @objc func handleClose() {
-        print("Close Player")
-        
-    }
-    
     func showVideoPlayer() {
         print("Show video Player")
         
@@ -246,11 +257,6 @@ class VideoLauncher: NSObject {
             view.addSubview(videoPlayerView)
             
             
-            view.addSubview(closeButton)
-            closeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
-            closeButton.widthAnchor.constraint(equalToConstant: 54).isActive = true
-            closeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { 
