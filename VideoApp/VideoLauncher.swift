@@ -12,6 +12,10 @@ import AVFoundation
 class VideoPlayerView: UIView {
     
     var player: AVPlayer?
+    var playerLayer: AVPlayerLayer?
+    
+    let urlString = "https://firebasestorage.googleapis.com/v0/b/videoapp-3e92d.appspot.com/o/testmovie.mov?alt=media&token=411ffcb2-d9dd-405e-97e5-aefd29a8191c"
+    
     var isPlaying = false
     
     let activityIndicatorView: UIActivityIndicatorView = {
@@ -37,8 +41,6 @@ class VideoPlayerView: UIView {
         button.addTarget(self, action: #selector(handlePause), for: .touchUpInside)
         return button
     }()
-    
-    
     
     let videoLengthLabel: UILabel = {
         let label = UILabel()
@@ -147,13 +149,12 @@ class VideoPlayerView: UIView {
     
     func setupPlayerView() {
         
-        let urlString = "https://firebasestorage.googleapis.com/v0/b/videoapp-3e92d.appspot.com/o/testmovie.mov?alt=media&token=411ffcb2-d9dd-405e-97e5-aefd29a8191c"
         if let url = URL(string: urlString) {
             player = AVPlayer(url: url)
             
-            let playerLayer = AVPlayerLayer(player: player)
-            self.layer.addSublayer(playerLayer)
-            playerLayer.frame = self.frame
+            playerLayer = AVPlayerLayer(player: player)
+            self.layer.addSublayer(playerLayer!)
+            playerLayer?.frame = self.frame
             
             player?.play()
             
@@ -216,6 +217,20 @@ class VideoPlayerView: UIView {
 
 class VideoLauncher: NSObject {
     
+    let closeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Close", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(handleClose), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func handleClose() {
+        print("Close Player")
+        
+    }
+    
     func showVideoPlayer() {
         print("Show video Player")
         
@@ -223,14 +238,20 @@ class VideoLauncher: NSObject {
             let view = UIView(frame: keyWindow.frame)
             view.backgroundColor = .white
             view.frame = CGRect(x: keyWindow.frame.width - 10, y: keyWindow.frame.height - 10, width: 10, height: 10)
-            
+            keyWindow.addSubview(view)
             
             let height = keyWindow.frame.width * 9 / 16
             let videoPlayerFrame = CGRect(x: 0, y: 0, width: keyWindow.frame.width, height: height)
             let videoPlayerView = VideoPlayerView(frame: videoPlayerFrame)
             view.addSubview(videoPlayerView)
             
-            keyWindow.addSubview(view)
+            
+            view.addSubview(closeButton)
+            closeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
+            closeButton.widthAnchor.constraint(equalToConstant: 54).isActive = true
+            closeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { 
                 view.frame = keyWindow.frame
@@ -241,7 +262,4 @@ class VideoLauncher: NSObject {
             })
         }
     }
-    
-    
-    
 }
