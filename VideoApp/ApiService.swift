@@ -16,7 +16,7 @@ class ApiService: NSObject {
     let baseUrl = "https://s3-us-west-2.amazonaws.com/youtubeassets"
     
     func fetchVideos(completion: @escaping ([Video]) -> ()) {
-        fetchFeedForURL(url: "\(baseUrl)/home.json", completion: completion)
+        fetchFeedForURL(url: "\(baseUrl)/homie.json", completion: completion)
     }
 
     
@@ -32,33 +32,11 @@ class ApiService: NSObject {
         let url = URL(string: url)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             
-            if error != nil {
-                print(error!)
-                return
-            }
-            
+            guard let data = data else { return }
+
             do {
-                let json =  try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                
-                var videos = [Video]()
-                
-                for dictionary in json as! [[String: AnyObject]] {
-                    
-                    let video = Video()
-                    video.title = dictionary["title"] as? String
-                    video.thumbnailImageName = dictionary["thumbnail_image_name"] as? String
-                    video.numberOfViews = dictionary["number_of_views"] as? NSNumber
-                    
-                    let channelDictionary = dictionary["channel"] as! [String: AnyObject]
-                    
-                    let channel = Channel()
-                    channel.name = channelDictionary["name"] as? String
-                    channel.profileImageName = channelDictionary["profile_image_name"] as? String
-                    
-                    video.channel = channel
-                    
-                    videos.append(video)
-                }
+
+                let videos = try JSONDecoder().decode([Video].self, from: data)
                 
                 DispatchQueue.main.async {
                     
