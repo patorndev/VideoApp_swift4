@@ -39,11 +39,8 @@ class ApiService: NSObject {
                 let videos = try JSONDecoder().decode([Video].self, from: data)
                 
                 DispatchQueue.main.async {
-                    
                     completion(videos)
-                    
                 }
-                
                 
             } catch let jsonError {
                 print(jsonError)

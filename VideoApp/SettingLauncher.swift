@@ -32,6 +32,8 @@ class SettingLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDel
     
     // add black faded blackground
     let blackView = UIView()
+    let cellId = "cellId"
+    let cellHeight: CGFloat = 50
     
     // add collectionview for slidein menu
     let collectionView: UICollectionView = {
@@ -41,8 +43,6 @@ class SettingLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDel
         return cv
     }()
     
-    let cellId = "cellId"
-    let cellHeight: CGFloat = 50
     
     let settings: [Setting] = {
         

@@ -22,6 +22,8 @@
 		FDAC51BC1F6FBED600AD4398 /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC51BB1F6FBED600AD4398 /* TrendingCell.swift */; };
 		FDAC51BE1F6FC3AB00AD4398 /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC51BD1F6FC3AB00AD4398 /* SubscriptionCell.swift */; };
 		FDBA43E21F612CFA00DD5EEC /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBA43E11F612CFA00DD5EEC /* Video.swift */; };
+		FDCF3C7D1F8775420074072F /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCF3C7C1F8775420074072F /* BaseCell.swift */; };
+		FDCF3C7F1F87760C0074072F /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCF3C7E1F87760C0074072F /* MenuCell.swift */; };
 		FDD8D57A1F5FED0500895F08 /* Menubar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8D5791F5FED0500895F08 /* Menubar.swift */; };
 		FDDFA7F81F70E428001A974B /* VideoLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDFA7F71F70E428001A974B /* VideoLauncher.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,9 @@
 		FDAC51BB1F6FBED600AD4398 /* TrendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
 		FDAC51BD1F6FC3AB00AD4398 /* SubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
 		FDBA43E11F612CFA00DD5EEC /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		FDCF3C7B1F87736D0074072F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FDCF3C7C1F8775420074072F /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		FDCF3C7E1F87760C0074072F /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		FDD8D5791F5FED0500895F08 /* Menubar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menubar.swift; sourceTree = "<group>"; };
 		FDDFA7F71F70E428001A974B /* VideoLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoLauncher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,8 +96,10 @@
 		FD6280A51F5FBBFD003D50A1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FDCF3C7C1F8775420074072F /* BaseCell.swift */,
 				FD6280A61F5FBC44003D50A1 /* VideoCell.swift */,
 				FDD8D5791F5FED0500895F08 /* Menubar.swift */,
+				FDCF3C7E1F87760C0074072F /* MenuCell.swift */,
 				FD523E211F679F140082D687 /* SettingCell.swift */,
 				FDAC51B91F6F81EC00AD4398 /* FeedCell.swift */,
 				FDAC51BB1F6FBED600AD4398 /* TrendingCell.swift */,
@@ -113,6 +120,7 @@
 		FD9D0AE01F5E95BC0038F2F4 = {
 			isa = PBXGroup;
 			children = (
+				FDCF3C7B1F87736D0074072F /* README.md */,
 				FD9D0AEB1F5E95BC0038F2F4 /* VideoApp */,
 				FD9D0AEA1F5E95BC0038F2F4 /* Products */,
 				FBCE338BF643C9B92496CFA1 /* Pods */,
@@ -295,12 +303,14 @@
 				FDAC51BA1F6F81EC00AD4398 /* FeedCell.swift in Sources */,
 				FDAC51BC1F6FBED600AD4398 /* TrendingCell.swift in Sources */,
 				FD9D0AEF1F5E95BC0038F2F4 /* HomeController.swift in Sources */,
+				FDCF3C7D1F8775420074072F /* BaseCell.swift in Sources */,
 				FD523E221F679F140082D687 /* SettingCell.swift in Sources */,
 				FDBA43E21F612CFA00DD5EEC /* Video.swift in Sources */,
 				FD6280A71F5FBC44003D50A1 /* VideoCell.swift in Sources */,
 				FDDFA7F81F70E428001A974B /* VideoLauncher.swift in Sources */,
 				FDA774451F69312900C75264 /* ApiService.swift in Sources */,
 				FD6280A41F5FBB7B003D50A1 /* Extensions.swift in Sources */,
+				FDCF3C7F1F87760C0074072F /* MenuCell.swift in Sources */,
 				FD9D0AED1F5E95BC0038F2F4 /* AppDelegate.swift in Sources */,
 				FDAC51BE1F6FC3AB00AD4398 /* SubscriptionCell.swift in Sources */,
 				FDD8D57A1F5FED0500895F08 /* Menubar.swift in Sources */,

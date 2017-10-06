@@ -9,89 +9,21 @@
 import UIKit
 import Kingfisher
 
-class BaseCell: UICollectionViewCell {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-    
-    func setupView(){
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-
 class VideoCell: BaseCell {
+    
+    // modify title constraint
+    var titleHeightConstraint: NSLayoutConstraint?
     
     
     var video: Video? {
         didSet {
-            
-            // set video title
-            titleLabel.text = video?.title
-            
-            // set thumbnail image
             setupThumbnailImage()
-            // set profile image
             setupProfileimage()
-            // set subtitle text
-            if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
-                
-                // format number method to convert e.g. from 999000999 to 999,000,999
-                let formatter = NumberFormatter()
-                formatter.numberStyle = .decimal
-                
-                let subtitleText = "\(channelName) • \(formatter.string(from: numberOfViews)!) • 2 years ago"
-                subtitleTextView.text = subtitleText
-            }
-            
-            // measure title size
-            if let title = video?.title {
-            
-                // whole framwidth - left margin - profile - space - right margin
-                let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
-                
-                // sort of combine fontlead and fragment origin to calculate height
-                let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-                
-                // get the estimate Rectangle area size of title text
-                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)], context: nil)
-                
-                if estimatedRect.size.height > 20 {
-                    titleHeightConstraint?.constant = 44
-                } else {
-                    titleHeightConstraint?.constant = 20
-                }
-
-            }
-            
+            setupTitleText()
+            setupSubtitleText()
         }
     }
     
-    func setupThumbnailImage() {
-        if let thumbnailImageUrl = video?.thumbnailImageName {
-            // call helper method to setup image
-//            thumbnailImageView.loadImageUsingURLString(urlString: thumbnailImageUrl)
-            
-            // Kingfisher helper
-            let url = URL(string: thumbnailImageUrl)
-            thumbnailImageView.kf.indicatorType = .activity
-            thumbnailImageView.kf.setImage(with: url)
-        }
-    }
-    
-    func setupProfileimage() {
-        if let profileImageUrl = video?.channel?.profileImageName {
-            // Kingfisher
-            let url = URL(string: profileImageUrl)
-            userProfileImageView.kf.setImage(with: url)
-        }
-    }
-
     // create big thumbnail
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
@@ -138,8 +70,63 @@ class VideoCell: BaseCell {
         return textView
     }()
     
-    // modify title constraint
-    var titleHeightConstraint: NSLayoutConstraint?
+    
+    fileprivate func setupSubtitleText() {
+        // set subtitle text
+        if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
+            
+            // format number method to convert e.g. from 999000999 to 999,000,999
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            
+            let subtitleText = "\(channelName) • \(formatter.string(from: numberOfViews)!) • 2 years ago"
+            subtitleTextView.text = subtitleText
+        }
+    }
+    
+    fileprivate func setupTitleText() {
+        titleLabel.text = video?.title
+        if let title = video?.title {
+            
+            // whole framwidth - left margin - profile - space - right margin
+            let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
+            
+            // sort of combine fontlead and fragment origin to calculate height
+            let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+            
+            // get the estimate Rectangle area size of title text
+            let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)], context: nil)
+            
+            if estimatedRect.size.height > 20 {
+                titleHeightConstraint?.constant = 44
+            } else {
+                titleHeightConstraint?.constant = 20
+            }
+            
+        }
+    }
+    
+    func setupThumbnailImage() {
+        if let thumbnailImageUrl = video?.thumbnailImageName {
+            // call helper method to setup image
+//            thumbnailImageView.loadImageUsingURLString(urlString: thumbnailImageUrl)
+            
+            // Kingfisher helper
+            let url = URL(string: thumbnailImageUrl)
+            thumbnailImageView.kf.indicatorType = .activity
+            thumbnailImageView.kf.setImage(with: url)
+        }
+    }
+    
+    func setupProfileimage() {
+        if let profileImageUrl = video?.channel?.profileImageName {
+            // Kingfisher
+            let url = URL(string: profileImageUrl)
+            userProfileImageView.kf.setImage(with: url)
+        }
+    }
+
+    
     
     override func setupView() {
         super.setupView()

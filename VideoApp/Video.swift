@@ -6,6 +6,8 @@
 //  Copyright © 2017 Book. All rights reserved.
 //
 
+// Model use Decodable Protocol to decode JSON to 
+
 import UIKit
 
 // video object for each cell

@@ -11,7 +11,10 @@ import UIKit
 class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var homeController: HomeController?
-    
+    let cellId = "cellId"
+    let imageNames = ["home", "trending", "subscriptions", "account"]
+    var horizontalBarLeftAnchorConstraint: NSLayoutConstraint?
+
     // lazy var: because its initial value might not be retrieved until after instance initialization completes
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -21,10 +24,6 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         cv.delegate = self
         return cv
     }()
-    
-    let cellId = "cellId"
-    
-    let imageNames = ["home", "trending", "subscriptions", "account"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,7 +40,6 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         setupHorizontalBar()
     }
     
-    var horizontalBarLeftAnchorConstraint: NSLayoutConstraint?
     
     func setupHorizontalBar() {
         let horizontalBarView = UIView()
@@ -118,40 +116,4 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
 }
 
 
-class MenuCell: BaseCell {
-    
-    // setup the icon
-    let imageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "home")?.withRenderingMode(.alwaysTemplate)
-        iv.tintColor = UIColor.rgb(red: 91, green: 14, blue: 13)
-        return iv
-    }()
-    
-    // when the cell is hilighted
-    override var isHighlighted: Bool {
-        didSet {
-            imageView.tintColor = isHighlighted ? UIColor.white : UIColor.rgb(red: 91, green: 14, blue: 13)
-        }
-    }
-    // when is selected
-    override var isSelected: Bool {
-        didSet {
-            imageView.tintColor = isSelected ? UIColor.white : UIColor.rgb(red: 91, green: 14, blue: 13)
-        }
-    }
-    
-    override func setupView() {
-        super.setupView()
-        
-        addSubview(imageView)
-        
-        // set cell size to be 28 px
-        addConstraintsWithFormat(format: "H:[v0(28)]", views: imageView)
-        addConstraintsWithFormat(format: "V:[v0(28)]", views: imageView)
-        
-        // center the icon to the cell
-        addConstraint(NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
-    }
-}
+

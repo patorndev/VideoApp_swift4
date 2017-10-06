@@ -15,27 +15,37 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     let subscriptionCellId = "subscriptionCellId"
     let titles = ["Home","Trending","Subscriptions","Account"]
     
+    lazy var settinglauncher: SettingLauncher = {
+        let launcher = SettingLauncher()
+        launcher.homeController = self
+        return launcher
+    }()
+
+    lazy var menuBar: MenuBar = {
+        let mb = MenuBar()
+        mb.homeController = self
+        return mb
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.automaticallyAdjustsScrollViewInsets = false
-        
-        
         navigationController?.navigationBar.isTranslucent = false
         
-        // title Label
+        setupNavigationTitle()
+        setCollectionView()
+        setupMenuBar()
+        setUpNavBarButton()
+    }
+    
+    fileprivate func setupNavigationTitle() {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "  Home"
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
-        
-        setCollectionView()
-        
-        setupMenuBar()
-        setUpNavBarButton()
     }
-    
     
     func setCollectionView() {
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -52,7 +62,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
         
-        
         collectionView?.isPagingEnabled = true
     }
     
@@ -66,50 +75,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         // add icons
         navigationItem.rightBarButtonItems = [moreButton, searchBarButtonItem]
     }
-    
-    // not execute everytime initiated
-    // only call when variable is nil
-    lazy var settinglauncher: SettingLauncher = {
-        let launcher = SettingLauncher()
-        launcher.homeController = self
-        return launcher
-    }()
-
-    @objc func handleMore() {
-        
-        settinglauncher.showSetting()
-    }
-    
-    func showControllerForSetting(_ setting: Setting) {
-        let dummySettingViewController = UIViewController()
-        dummySettingViewController.view.backgroundColor = UIColor.white
-        dummySettingViewController.navigationItem.title = setting.name.rawValue
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navigationController?.pushViewController(dummySettingViewController, animated: true)
-    }
-    
-    @objc func handleSearch() {
-        scrollToMenuIndex(menuIndex: 2)
-    }
-    
-    func scrollToMenuIndex(menuIndex: Int) {
-        let indexPath = IndexPath(item: menuIndex, section: 0)
-        collectionView?.scrollToItem(at: indexPath, at: .left, animated: true)
-        setUpTitleForIndex(index: menuIndex)
-    }
-    
-    private func setUpTitleForIndex(index: Int) {
-        if let titleLabel = navigationItem.titleView as? UILabel {
-            titleLabel.text = "  \(titles[index])"
-        }
-    }
-    
-    lazy var menuBar: MenuBar = {
-        let mb = MenuBar()
-        mb.homeController = self
-        return mb
-    }()
     
     // this is the only class that should have access to this function
     private func setupMenuBar() {
@@ -125,7 +90,40 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: menuBar)
         view.addConstraintsWithFormat(format: "V:[v0(50)]", views: menuBar)
         
+        // Pin to top
+        redView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+    }
+
+
+    @objc func handleMore() {
+        settinglauncher.showSetting()
+    }
+    @objc func handleSearch() {
+        
+    }
+
+    
+    func showControllerForSetting(_ setting: Setting) {
+        let dummySettingViewController = UIViewController()
+        dummySettingViewController.view.backgroundColor = UIColor.white
+        dummySettingViewController.navigationItem.title = setting.name.rawValue
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.pushViewController(dummySettingViewController, animated: true)
+    }
+    
+    
+    func scrollToMenuIndex(menuIndex: Int) {
+        let indexPath = IndexPath(item: menuIndex, section: 0)
+        collectionView?.scrollToItem(at: indexPath, at: .left, animated: true)
+        setUpTitleForIndex(index: menuIndex)
+    }
+    
+    private func setUpTitleForIndex(index: Int) {
+        if let titleLabel = navigationItem.titleView as? UILabel {
+            titleLabel.text = "  \(titles[index])"
+        }
     }
     
     
@@ -141,7 +139,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //print(scrollView.contentOffset.x)
         
         menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 4
     }
@@ -164,7 +161,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
 
-        
         return cell
     }
     

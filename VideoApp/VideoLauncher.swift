@@ -122,52 +122,68 @@ class VideoPlayerView: UIView {
     }
 
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setupPlayerView()
-        
-        setupGradientLayer()
-        
-        controlContainerView.frame = frame
-        addSubview(controlContainerView)
-        
+    fileprivate func setupActivityIndicator() {
         controlContainerView.addSubview(activityIndicatorView)
         activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        
+    }
+    
+    fileprivate func setupPausePlayButton() {
         controlContainerView.addSubview(pausePlayButton)
         pausePlayButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         pausePlayButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         pausePlayButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         pausePlayButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
+    }
+    
+    fileprivate func setupVideoLenthLabel() {
         controlContainerView.addSubview(videoLengthLabel)
         videoLengthLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
         videoLengthLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2).isActive = true
         videoLengthLabel.widthAnchor.constraint(equalToConstant: 60).isActive = true
         videoLengthLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        
+    }
+    
+    fileprivate func setupCurrentTimeLabel() {
         controlContainerView.addSubview(cuurentTimeLabel)
         cuurentTimeLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
         cuurentTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2).isActive = true
         cuurentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         cuurentTimeLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        
+    }
+    
+    fileprivate func setupSlider() {
         controlContainerView.addSubview(videoSlider)
         videoSlider.rightAnchor.constraint(equalTo: videoLengthLabel.leftAnchor).isActive = true
         videoSlider.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         videoSlider.leftAnchor.constraint(equalTo: cuurentTimeLabel.rightAnchor).isActive = true
         videoSlider.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
+    }
+    
+    fileprivate func setupCloseButton() {
         controlContainerView.addSubview(closeButton)
         closeButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
         closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
         closeButton.widthAnchor.constraint(equalToConstant: 54).isActive = true
         closeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
     
-        backgroundColor = .black
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
+        setupPlayerView()
+        setupGradientLayer()
+        
+        controlContainerView.frame = frame
+        addSubview(controlContainerView)
+        backgroundColor = .black
+
+        setupActivityIndicator()
+        setupPausePlayButton()
+        setupVideoLenthLabel()
+        setupCurrentTimeLabel()
+        setupSlider()
+        setupCloseButton()
     }
 
 
@@ -253,14 +269,10 @@ class VideoLauncher: NSObject {
             view.backgroundColor = .white
             view.frame = CGRect(x: keyWindow.frame.width - 10, y: keyWindow.frame.height - 10, width: 10, height: 10)
             keyWindow.addSubview(view)
-            
             let height = keyWindow.frame.width * 9 / 16
             let videoPlayerFrame = CGRect(x: 0, y: 0, width: keyWindow.frame.width, height: height)
             let videoPlayerView = VideoPlayerView(frame: videoPlayerFrame)
             view.addSubview(videoPlayerView)
-            
-            
-
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { 
                 view.frame = keyWindow.frame

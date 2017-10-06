@@ -10,15 +10,6 @@ import UIKit
 
 class SettingCell: BaseCell {
     
-    // when the cell is hilighted; change color
-    override var isHighlighted: Bool {
-        didSet {
-            backgroundColor = isHighlighted ? UIColor.darkGray : UIColor.white
-            nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
-            iconImage.tintColor = isHighlighted ? UIColor.white : UIColor.darkGray
-        }
-    }
-    
     // set properties of each settingCell
     var setting: Setting? {
         didSet{
@@ -33,7 +24,6 @@ class SettingCell: BaseCell {
             }
         }
     }
-    
     // create label
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -49,6 +39,16 @@ class SettingCell: BaseCell {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+    
+    // when the cell is hilighted; change color
+    override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? UIColor.darkGray : UIColor.white
+            nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
+            iconImage.tintColor = isHighlighted ? UIColor.white : UIColor.darkGray
+        }
+    }
+
     
     override func setupView() {
         super.setupView()
@@ -67,4 +67,5 @@ class SettingCell: BaseCell {
         // center icon image
         addConstraint(NSLayoutConstraint(item: iconImage, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
     }
+    
 }

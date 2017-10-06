@@ -11,15 +11,7 @@ import UIKit
 class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
-    
     var videos: [Video]?
-    
-    func fetchVideos() {
-        ApiService.sharedInstance.fetchVideos { (videos: [Video]) in
-            self.videos = videos
-            self.collectionView.reloadData()
-        }
-    }
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -30,17 +22,22 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         cv.delegate = self
         return cv
     }()
+    
+    func fetchVideos() {
+        ApiService.sharedInstance.fetchVideos { (videos: [Video]) in
+            self.videos = videos
+            self.collectionView.reloadData()
+        }
+    }
 
     override func setupView() {
         super.setupView()
-        
         fetchVideos()
         
         backgroundColor = .brown
         addSubview(collectionView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
-        
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: cellId)
     }
     
