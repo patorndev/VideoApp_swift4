@@ -1,8 +1,8 @@
 #  Video App
 
-##  Based on [LetsBuildThatApp Youtube tutorials] (https://www.letsbuildthatapp.com/course/YouTube) by Brian Voong
+Based on [LetsBuildThatApp Youtube tutorials](https://www.letsbuildthatapp.com/course/YouTube) by Brian Voong
 
-##  This application run on iOS 10.3.3 and needs internet connection to download its contents.
+This application run on iOS 10.3.3 and needs internet connection to download its contents.
 
 ### Feature
 
